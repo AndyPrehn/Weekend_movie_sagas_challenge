@@ -11,6 +11,11 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+const displayMovie = (movieToBeDisplayed) => {
+    console.log(movieToBeDisplayed);
+    dispatch({type: 'SET_MOVIE_DETAILS', payload: movieToBeDisplayed })
+}
+
     return (
         <main>
             <h1>MovieList</h1>
@@ -19,7 +24,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img onclick={(event) => displayMovie(movie)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}
