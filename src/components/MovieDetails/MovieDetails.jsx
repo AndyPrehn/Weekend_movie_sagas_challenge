@@ -10,7 +10,7 @@ function MovieDetail() {
 
 
 useEffect(() => {
-    dispatchEvent({ type: 'FETCH_MOVIE_DETAILS', payload: movieId });
+    dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: movieId });
 }, [movieId]);
 
 
@@ -22,7 +22,7 @@ useEffect(() => {
             <p>{movie.description}</p>
             <ul>
                 {
-                    genre.map(genreToDisplay => <li>{genreToDisplay}</li>)
+                    genres.map(genreToDisplay => <li>{genreToDisplay.name}</li>)
                 }
             </ul>
         </div>

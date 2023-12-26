@@ -25,7 +25,7 @@ const displayMovie = (movieToDisplay) => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick={(event) => displayMovie(movie)} src={movie.poster} alt={movie.title}/>
+                            <img onClick={(event) => displayMovie(movie.id)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}
