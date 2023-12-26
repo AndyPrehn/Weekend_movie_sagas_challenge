@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 
 function MovieList() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-const displayMovie = (movieToBeDisplayed) => {
-    console.log(movieToBeDisplayed);
-    dispatch({type: 'SET_MOVIE_DETAILS', payload: movieToBeDisplayed })
-}
+const displayMovie = (movieToDisplay) => {
+    history.push(`/detail/${movieToDisplay}`);
+}   
 
     return (
         <main>
@@ -24,7 +25,7 @@ const displayMovie = (movieToBeDisplayed) => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onclick={(event) => displayMovie(movie)} src={movie.poster} alt={movie.title}/>
+                            <img onClick={(event) => displayMovie(movie)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}
